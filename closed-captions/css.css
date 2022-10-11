@@ -126,6 +126,7 @@ Sounds.
 	transform: rotate(0deg);
 }
 
+
 @keyframes sound3 {
 	0%, 100% {
 		transform: rotate(0deg);
@@ -140,6 +141,56 @@ Sounds.
 		transform: rotate(-2deg);
 	}
 }
+
+
+
+
+
+@property --a{
+	syntax: '<angle>';
+	inherits: false;
+	initial-value: 90deg;
+  }
+  @property --p1{
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 1%;
+  }
+  @property --p2{
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 90%;
+  }
+  @property --c{
+	syntax: '<color>';
+	inherits: false;
+	initial-value: red;
+  }
+  
+  .sound8 {
+	/*  needed for firefox to have a valid output */
+	--a:20deg;
+	--p1:10%;
+	--p2:90%;
+	--c:red;
+	transform: rotate(0deg);
+	/**/ 
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) var(--p1), rgba(255,255,255,1) var(--p1), rgba(255,255,255,1) var(--p2), rgba(0,0,0,1) var(--p2), rgba(0,0,0,1) 100%);
+	animation:a 1s linear infinite alternate;
+  }
+
+  //doesnt work in firefox sadge
+  
+  @keyframes a{
+	from {
+	--p1:10%;
+	transform: rotate(0deg);
+	}
+	to {
+	--p1:40%;
+	transform: rotate(100deg);
+	}
+  }
 
 
 /* **********************************************
