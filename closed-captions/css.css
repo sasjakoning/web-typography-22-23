@@ -4,6 +4,7 @@
 	--black: #080D0C;
 	--darkgreen: #147358;
 	--lightgreen: #30BF97;
+	--beige: #9EA692;
 }
 
 body {
@@ -32,13 +33,52 @@ Feel free to adjust the defaults to your needs.
 	transition: .2s;
 	opacity: 0;
 }
+
+/* robot voice */
 .voice1 {
-	font-style: italic;
-}
-.voice2 {
-	font-weight: bold;
+	font-family: monospace;
 }
 
+/* main character voice */
+.voice2 {
+	font-weight: bold;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	right: 10%;
+}
+
+/* fuck off skinjob */
+.voice3 {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-style: italic;
+	font-size: 0em;
+	top: 28%;
+	right: 62%;
+	max-width: 6em;
+}
+
+.voice3.on {
+	animation: voice3-1 .3s 3, voice3-2 .8s;
+	font-size: 1em;
+	transform-origin: middle left;
+}
+
+@keyframes voice3-1 {
+	0%, 100% {
+		transform: translateX(0);
+	}
+	20% {
+		transform: translateX(.1em);
+	}
+	40% {
+		transform: translateX(-.1em);
+	}
+	60% {
+		transform: translateX(.1em);
+	}
+	80% {
+		transform: translateX(-.1em);
+	}
+}
 /* **********************************************
 The first paragraph, with extended timing for 
 	all siblings. Basically what it does is that
@@ -49,73 +89,59 @@ You probably want to change the styling.
 ********************************************** */
 .p0 span {
 	opacity: 0;
-	font-family: brenner;
 }
 .p0.on span:first-of-type {
 	opacity: 1;
 	transition: 0s;
-	font-weight: 200;
 }
 .p0.on span:nth-of-type(2) {
 	opacity: 1;
 	transition: 0s .4s;
 	margin-right: -.25em;
-	font-weight: 400;
 }
 .p0.on span:nth-of-type(3) {
 	opacity: 1;
 	transition: 0s .5s;
 	margin-right: -.25em;
-	font-weight: 600;
 }
 .p0.on span:nth-of-type(4) {
 	opacity: 1;
 	transition: 0s .7s;
 	margin-right: -.25em;
-	font-weight: 800;
 }
 .p0.on span:nth-of-type(5) {
 	opacity: 1;
 	transition: 0s 1.1s;
 	margin-right: -.25em;
-	font-family: "brenner sans";
 }
 .p0.on span:nth-of-type(6) {
 	opacity: 1;
 	transition: 0s 1.4s;
 	margin-right: -.25em;
-	font-family: "brenner display";
 }
 .p0.on span:nth-of-type(7) {
 	opacity: 1;
 	transition: 0s 1.7s;
 	margin-right: -.25em;
-	font-family: "brenner script";
 }
 .p0.on span:nth-of-type(8) {
 	opacity: 1;
 	transition: 0s 2s;
-	font-family: "brenner script";
 }
 .p0.on span:nth-of-type(9) {
 	opacity: 1;
 	transition: 0s 3s;
-	font-family: "brenner Sans condensed";
 }
 .p0.on span:nth-of-type(10) {
 	opacity: 1;
 	transition: 0s 3.2s;
-	font-family: "brenner mono";
 }
 .p0.on span:nth-of-type(11) {
 	opacity: 1;
 	transition: 0s 3.7s;
-	font-family: "brenner slab";
 }
 
 .p1.on {
-	background: hotpink;
-	color: red;
 	font-size: 20px;
 }
 
@@ -229,7 +255,9 @@ Sounds.
 	}
 }
 
+/* alarm again, move aside */
 .sound6 #video-mask {
+	box-shadow: 0px 0px 0px transparent;
 	animation: sound6-1 .3s 2 ease-in-out, sound6-3 .6s ease-in-out, sound6-2 1.6s 1.6s ease-in-out;
 }
 
@@ -274,8 +302,11 @@ Sounds.
 	filter: url(cssfilter.svg#filter);
 } */
 
-.sound8 #video-mask {
-	animation: sound8mask 46s;
+/* interrogation beep */
+.sound8 {
+	transition: .5s all;
+	transition-delay: .5s;
+	background-color: var(--beige);
 }
 
 @keyframes sound8mask {
@@ -287,10 +318,11 @@ Sounds.
 	}
 }
 
-.sound8 {
+.sound8 #video-mask {
 	position: relative;
 	transform: translateX(0);
-	animation: sound8-1 .1s 2 ease-in-out;
+	box-shadow: 0px 0px 0px transparent;
+	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s;
 }
 
 @keyframes sound8-1 {
@@ -311,17 +343,27 @@ Sounds.
 	}
 }
 
+@keyframes sound8-2 {
+	0%, 100% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0);
+	}
+	50% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0.5);
+	}
+}
+
 .sound8::before, .sound8::after {
 	content: "";
 	position: absolute;
 	width: 100%;
 	height: 0px;
-	background: var(--black);
+	background: var(--gray);
 	transform: translate(0, 0);
 	box-shadow: 0px solid transparent;
 	border-radius: 0;
 	z-index: 10;
-	animation: sound8-2 56s 1s ease-out forwards, sound8-2 .5s 46s reverse forwards;
+	/* box-shadow: 0px 0px 35px 20px var(--gray); */
+	animation: sound8-3 56s 1s ease-out forwards, sound8-3 .5s 46s reverse forwards;
 }
 
 .sound8::before {
@@ -336,7 +378,7 @@ Sounds.
 	left: 0;
 }
 
-@keyframes sound8-2 {
+@keyframes sound8-3 {
 	from {
 		height: 0%;
 	}
