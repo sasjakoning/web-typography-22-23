@@ -8,8 +8,23 @@
 }
 
 body {
-	background-color: var(--gray);
+	background-color: var(--lightgreen);
 	position: relative;
+}
+
+body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	mix-blend-mode: darken;
+	mix-blend-mode: difference;
+	mix-blend-mode: exclusion;
+	mix-blend-mode: multiply;
+	background-color: rgb(198, 68, 68);
+	filter: url(noise.svg#noiseFilter);
 }
 
 /* **********************************************
@@ -298,9 +313,6 @@ Sounds.
 	}
 }
 
-/* .sound8 #video-mask {
-	filter: url(cssfilter.svg#filter);
-} */
 
 /* interrogation beep */
 .sound8 {
@@ -314,15 +326,31 @@ Sounds.
 		transform: scale(1);
 	}
 	to {
-		transform: scale(.5);
+		transform: scale(1.2);
 	}
 }
 
 .sound8 #video-mask {
 	position: relative;
+	filter: none;
 	transform: translateX(0);
 	box-shadow: 0px 0px 0px transparent;
-	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s;
+	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s, distort .5s 92;
+}
+
+@keyframes distort {
+	0%, 100% {
+		filter: url(cssfilter.svg#filter1);
+	}
+	25% {
+		filter: url(cssfilter.svg#filter2);
+	}
+	50% {
+		filter: url(cssfilter.svg#filter3);
+	}
+	75% {
+		filter: url(cssfilter.svg#filter4);
+	}
 }
 
 @keyframes sound8-1 {
@@ -360,8 +388,8 @@ Sounds.
 	background: var(--gray);
 	transform: translate(0, 0);
 	box-shadow: 0px solid transparent;
+	z-index: -10;
 	border-radius: 0;
-	z-index: 10;
 	/* box-shadow: 0px 0px 35px 20px var(--gray); */
 	animation: sound8-3 56s 1s ease-out forwards, sound8-3 .5s 46s reverse forwards;
 }
