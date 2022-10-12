@@ -144,6 +144,19 @@ Sounds.
 	}
 }
 
+.sound2 #video-mask {
+	animation: sound2-1 1.5s ease-in-out;
+}
+
+@keyframes sound2-1 {
+	0%, 100% {
+		border: 0px solid var(--lightgreen);
+	}
+	50% {
+		border: 4px solid var(--lightgreen);
+	}
+}
+
 .sound2::before {
 	content: "";
 	position: absolute;
@@ -151,25 +164,32 @@ Sounds.
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: red;
+	background: radial-gradient(circle, rgba(48,191,151,1) 0%, rgba(48,191,151,0) 70%);
 	z-index: -10;
-	animation: sound2 2s ease-in-out;
+	animation: sound2-2 1.5s ease-in-out;
 }
 
-@keyframes sound2 {
-	0%, 100% {
-		width: 0em;
-		height: 0em;
+@keyframes sound2-2 {
+	0% {
+		width: 10em;
+		height: 10em;
+		left: 20%;
 	}
 	50% {
 		width: 40em;
 		height: 40em;
+		left: 50%;
+	}
+	100% {
+		width: 10em;
+		height: 10em;
+		left: 80%;
 	}
 }
 
 /* alarm sound, fuck off skinjob */
 .sound4 #video-mask {
-	animation: sound4-1 .3s 2 ease-in-out, sound4-2 1s 7s ease-in-out;
+	animation: sound4-1 .3s 2 ease-in-out, sound4-3 .6s ease-in-out , sound4-2 1s 7s ease-in-out;
 }
 
 @keyframes sound4-1 {
@@ -196,12 +216,21 @@ Sounds.
 		transform: translateX(0em);
 	}
 	50% {
-		transform: translateX(2em);
+		transform: translateX(4em);
+	}
+}
+
+@keyframes sound4-3 {
+	0%, 100% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0);
+	}
+	50% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0.5);
 	}
 }
 
 .sound6 #video-mask {
-	animation: sound6-1 .3s 2 ease-in-out, sound6-2 1.6s 1.6s ease-in-out;
+	animation: sound6-1 .3s 2 ease-in-out, sound6-3 .6s ease-in-out, sound6-2 1.6s 1.6s ease-in-out;
 }
 
 @keyframes sound6-1 {
@@ -228,7 +257,16 @@ Sounds.
 		transform: translateX(0em);
 	}
 	50% {
-		transform: translateX(-2em);
+		transform: translateX(-4em);
+	}
+}
+
+@keyframes sound6-3 {
+	0%, 100% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0);
+	}
+	50% {
+		box-shadow: 0px 0px 35px 20px rgba(48, 191, 151, 0.5);
 	}
 }
 
@@ -278,7 +316,10 @@ Sounds.
 	position: absolute;
 	width: 100%;
 	height: 0px;
-	background-color: var(--black);
+	background: var(--black);
+	transform: translate(0, 0);
+	box-shadow: 0px solid transparent;
+	border-radius: 0;
 	z-index: 10;
 	animation: sound8-2 56s 1s ease-out forwards, sound8-2 .5s 46s reverse forwards;
 }
@@ -286,11 +327,13 @@ Sounds.
 .sound8::before {
 	top: 0;
 	right: 0;
+	left: 0;
 }
 
 .sound8::after {
 	bottom: 0;
 	right: 0;
+	left: 0;
 }
 
 @keyframes sound8-2 {
