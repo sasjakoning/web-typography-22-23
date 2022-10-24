@@ -26,7 +26,7 @@ function callback(mutationList, observer) {
             document.getElementById("filter4").children[1].setAttribute("scale", `${scaleVal}`)
             baseVal++
             scaleVal++
-        }, 5000);
+        }, 8000);
       }
     }
   })
