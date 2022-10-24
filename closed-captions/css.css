@@ -15,6 +15,7 @@ body {
 body::before {
 	content: "";
 	position: absolute;
+	pointer-events: none;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -23,8 +24,8 @@ body::before {
 	mix-blend-mode: difference;
 	mix-blend-mode: exclusion;
 	mix-blend-mode: multiply;
-	background-color: rgb(198, 68, 68);
-	filter: url(noise.svg#noiseFilter);
+	/* background-color: rgb(198, 68, 68);
+	filter: url(noise.svg#noiseFilter); */
 }
 
 /* **********************************************
@@ -166,6 +167,9 @@ Sounds.
 	style anything within the body the moment
 	a sound starts.
 *********************************************  */
+#video-container {
+	position: relative;
+}
 
 .sound0 {
 	background-color: var(--gray);
@@ -174,6 +178,31 @@ Sounds.
 /* alarm sound */
 .sound1 {
 	animation: sound1 1.5s ease-in-out;
+}
+
+.sound1 #video-container::before {
+	content: "";
+	position: absolute;
+	top: -30%;
+	left: -10%;
+	right: -10%;
+	bottom: -30%;
+	background-position: center;
+	background-size: 100% 100%;
+	background-image: none;
+	background-repeat: no-repeat;
+	transition: none;
+	animation: sound1-lines 0.1875s 8;
+	z-index: -1;
+}
+
+@keyframes sound1-lines {
+	from {
+		background-image: url(./images/jagged-corners-1.svg);
+	}
+	to {
+		background-image: url(./images/jagged-corners-2.svg);
+	}
 }
 
 @keyframes sound1 {
@@ -207,6 +236,7 @@ Sounds.
 	transform: translate(-50%, -50%);
 	background: radial-gradient(circle, rgba(48,191,151,1) 0%, rgba(48,191,151,0) 70%);
 	z-index: -10;
+	mix-blend-mode: normal;
 	animation: sound2-2 1.5s ease-in-out;
 }
 
@@ -231,6 +261,31 @@ Sounds.
 /* alarm sound, fuck off skinjob */
 .sound4 #video-mask {
 	animation: sound4-1 .3s 2 ease-in-out, sound4-3 .6s ease-in-out , sound4-2 1s 7s ease-in-out;
+}
+
+.sound4 #video-container::before {
+	content: "";
+	position: absolute;
+	top: -20%;
+	left: -10%;
+	right: -10%;
+	bottom: -20%;
+	background-position: center;
+	background-size: 100% 100%;
+	background-image: none;
+	background-repeat: no-repeat;
+	transition: none;
+	animation: sound4-lines 0.075s 8;
+	z-index: -1;
+}
+
+@keyframes sound4-lines {
+	from {
+		background-image: url(./images/jagged-lines.svg);
+	}
+	to {
+		background-image: url(./images/jagged-lines-2.svg);
+	}
 }
 
 @keyframes sound4-1 {
@@ -334,8 +389,18 @@ Sounds.
 	position: relative;
 	filter: none;
 	transform: translateX(0);
+	/* mask-image: url(./images/lines-mask.svg); */
 	box-shadow: 0px 0px 0px transparent;
-	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s, distort .5s 92;
+	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s, distort .5s 92, mask-gradient 46s ease;
+}
+
+@keyframes mask-gradient {
+	from {
+		
+	}
+	to {
+	
+	}
 }
 
 @keyframes distort {
