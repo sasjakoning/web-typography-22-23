@@ -28,6 +28,11 @@ body::before {
 	filter: url(noise.svg#noiseFilter); */
 }
 
+svg {
+	position: absolute;
+    pointer-events: none;
+}
+
 /* **********************************************
 Basic mechanics
 Hide all paragraphs by default
@@ -405,16 +410,16 @@ Sounds.
 
 @keyframes distort {
 	0%, 100% {
-		filter: url(cssfilter.svg#filter1);
+		filter: url(#filter1);
 	}
 	25% {
-		filter: url(cssfilter.svg#filter2);
+		filter: url(#filter2);
 	}
 	50% {
-		filter: url(cssfilter.svg#filter3);
+		filter: url(#filter3);
 	}
 	75% {
-		filter: url(cssfilter.svg#filter4);
+		filter: url(#filter4);
 	}
 }
 
