@@ -4,12 +4,14 @@
 	--black: #080D0C;
 	--darkgreen: #147358;
 	--lightgreen: #30BF97;
+	--lightgreenvoice: #41f4c1;
 	--beige: #9EA692;
+	--red: #ff4073;
 
 	--greyish: #7B8C80;
 }
 
-html, * {
+html, * { 
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -89,7 +91,11 @@ svg {
 	opacity: 0;
 	transition: .05s;
 	position: absolute;
-	color: white;
+	text-shadow:
+    -1px -1px 0 var(--black),  
+     1px -1px 0 var(--black),
+    -1px  1px 0 var(--black),
+     1px  1px 0 var(--black);
 	z-index: 100;
 }
 #closed-captions .on {
@@ -101,15 +107,94 @@ svg {
 }
 
 /* robot voice */
-.voice1 {
+.voice1, .voice4 {
 	font-family: monospace;
+	position: absolute;
+	color: lightgray;
+}
+.p0, .p2 {
+	top: 1rem;
+	right: 1rem;
+}
+
+.sound8 .voice1:not(.p8, .p11, .p14, .p17, .p19, .p22, .p25, .p28, .p33, .p36, .p38) {
+	/* animation: sound8-voice1 46s; */
+	font-size: 1rem;
+}
+
+@keyframes sound8-voice1 {
+	from {
+		font-size: 1rem;
+	}
+	to {
+		font-size: 1.5rem;
+	}
+}
+
+.p8, .p10, .p11, .p13, .p14, .p16, .p17, .p19, .p21, .p22, .p24, .p25, .p27, .p28, .p30, .p32, .p33, .p35, .p36, .p38, .p40 {
+	top: 50%;
+	transform: translate(0%, -50%);
+	left: 1rem;
+	max-width: 30%;
+}
+
+.p8, .p11, .p14, .p17, .p19, .p22, .p25, .p28, .p33, .p36, .p38 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	animation: glitch .2s infinite;
+}
+
+@keyframes glitch {
+	0%, 24% {
+		text-shadow: -0px -0px 0 rgba(255, 0, 0, .5), 2px 0px 0 rgba(0, 0, 255, .5), -1px -1px 0 var(--black),  
+		1px -1px 0 var(--black),
+	   -1px  1px 0 var(--black),
+		1px  1px 0 var(--black);;
+		transform: translate(0px, -50%);
+	}
+	25%, 74% {
+		text-shadow: -2px -0px 0 rgba(255, 0, 0, .5), 0px 0px 0 rgba(0, 0, 255, .5), -1px -1px 0 var(--black),  
+		1px -1px 0 var(--black),
+	   -1px  1px 0 var(--black),
+		1px  1px 0 var(--black);;
+		transform: translate(-2px, -50%);
+	}
+	75%, 100% {
+		text-shadow: -0px -0px 0 rgba(255, 0, 0, .5), 2px 0px 0 rgba(0, 0, 255, .5), -1px -1px 0 var(--black),  
+		1px -1px 0 var(--black),
+	   -1px  1px 0 var(--black),
+		1px  1px 0 var(--black);;
+		transform: translate(0px, -50%);
+	}
 }
 
 /* main character voice */
 .voice2 {
 	font-weight: bold;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	right: 10%;
+	right: 1rem;
+	top: calc(100% - 2rem);
+	color: var(--lightgreenvoice);
+}
+
+.p7.on {
+	animation: fuckoff 1.5s .7s ease-in-out;
+}
+
+@keyframes fuckoff {
+	0%, 100% {
+		transform: translateX(0em);
+	}
+	50% {
+		transform: translateX(-4em);
+	}
+}
+
+.p9, .p12, .p15, .p18, .p20, .p23, .p26, .p29, .p31, .p34, .p37, .p39, .p41, .p42, .p43 {
+	top: 50%;
+	transform: translate(0%, -50%);
+	right: 1rem;
+	max-width: 30%;
 }
 
 /* fuck off skinjob */
@@ -120,6 +205,7 @@ svg {
 	top: 28%;
 	right: 62%;
 	max-width: 6em;
+	color: white;
 }
 
 .voice3.on {
@@ -403,7 +489,7 @@ svg {
 
 
 /* LOUD alarm, interrogation beep */
-/* .sound8 {
+.sound8 {
 	transition: .5s all;
 	transition-delay: .5s;
 	background-color: var(--beige);
@@ -525,11 +611,22 @@ svg {
 	to {
 		height: 55%;
 	}
-} */
+}
 
 
 /* --- NEXT SCENE --- */
 
 .sound10 {
-	background-color: var(--greyish);
+	background: linear-gradient(-180deg, var(--beige) 0%, var(--gray) 100%);
+	background-size: 200% 200%;
+	animation: sound10-gradient 10s forwards;
+}
+
+@keyframes sound10-gradient {
+	0% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
 }
