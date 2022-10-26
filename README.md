@@ -2,6 +2,8 @@
 
 In dit project ben ik bezig geweest met het visueel maken van geluid bij twee clips uit de film Blade Runner 2049. 
 
+Deze website is gemaakt voor Chrome. 
+
 ## Schetsen
 
 Om te beginnen had ik een aantal schetsen en aantekeningen gemaakt. Hiermee wou ik een beter idee krijgen van de opdracht en hoe ik de video ga vormgeven.
