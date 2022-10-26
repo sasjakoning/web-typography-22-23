@@ -9,6 +9,18 @@ const options = {
 function callback(mutationList, observer) {
   mutationList.forEach(function(mutation) {
     if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+
+      console.log(bodyElement.classList.length)
+      if(bodyElement.classList.length == 2){
+
+        console.log("length is equal to 2")
+        // console.log(bodyElement.classList.length)
+        // bodyElement.classList.remove(bodyElement.classList[1])
+        // console.log(bodyElement.classList.length)
+      }
+
+
+
       if(bodyElement.classList.value.includes('sound8') || bodyElement.classList.value.length == 7){
         console.log(" setting timeout")
         let baseVal = 1

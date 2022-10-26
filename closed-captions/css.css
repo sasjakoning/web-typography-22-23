@@ -5,12 +5,43 @@
 	--darkgreen: #147358;
 	--lightgreen: #30BF97;
 	--beige: #9EA692;
+
+	--greyish: #7B8C80;
+}
+
+html, * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
 	background-color: var(--lightgreen);
 	position: relative;
+	display: grid;
+	height: 100vh;
+	margin: 0;
+	justify-content: center;
 }
+
+#video-container {
+	margin: auto;
+}
+
+#video-mask {
+	aspect-ratio: 240.5/100;
+	display: grid;
+	overflow: hidden;
+	align-content: center;
+	transition: 1s;
+}
+
+iframe {
+	width: 80vw;
+	height: 53.33333333vw;
+	margin-top: -0.35vw;
+}
+
 
 .noise {
 	position: absolute;
@@ -209,7 +240,7 @@ svg {
 	}
 }
 
-/* alarm sound, fuck off skinjob */
+/* LOUD alarm sound, fuck off skinjob */
 .sound4 #video-mask {
 	animation: sound4-1 .3s 2 ease-in-out, sound4-3 .6s ease-in-out , sound4-2 1s 7s ease-in-out;
 }
@@ -302,7 +333,7 @@ svg {
 	}
 }
 
-/* alarm again, move aside */
+/* LOUD alarm again, move aside */
 .sound6 #video-mask {
 	box-shadow: 0px 0px 0px transparent;
 	animation: sound6-1 .3s 2 ease-in-out, sound6-3 .6s ease-in-out, sound6-2 1.6s 1.6s ease-in-out;
@@ -345,9 +376,34 @@ svg {
 	}
 }
 
+.sound6 #video-container::before {
+	content: "";
+	position: absolute;
+	top: -20%;
+	left: -10%;
+	right: -10%;
+	bottom: -20%;
+	background-position: center;
+	background-size: 100% 100%;
+	background-image: none;
+	background-repeat: no-repeat;
+	transition: none;
+	animation: sound6-lines 0.15s 4;
+	z-index: -1;
+}
 
-/* interrogation beep */
-.sound8 {
+@keyframes sound6-lines {
+	from {
+		background-image: url(./images/jagged-lines.svg);
+	}
+	to {
+		background-image: url(./images/jagged-lines-2.svg);
+	}
+}
+
+
+/* LOUD alarm, interrogation beep */
+/* .sound8 {
 	transition: .5s all;
 	transition-delay: .5s;
 	background-color: var(--beige);
@@ -362,11 +418,35 @@ svg {
 	}
 }
 
+.sound8 #video-container::before {
+	content: "";
+	position: absolute;
+	top: -20%;
+	left: -10%;
+	right: -10%;
+	bottom: -20%;
+	background-position: center;
+	background-size: 100% 100%;
+	background-image: none;
+	background-repeat: no-repeat;
+	transition: none;
+	animation: sound8-lines 0.15s 4;
+	z-index: -1;
+}
+
+@keyframes sound8-lines {
+	from {
+		background-image: url(./images/jagged-lines.svg);
+	}
+	to {
+		background-image: url(./images/jagged-lines-2.svg);
+	}
+}
+
 .sound8 #video-mask {
 	position: relative;
 	filter: none;
 	transform: translateX(0);
-	/* mask-image: url(./images/lines-mask.svg); */
 	box-shadow: 0px 0px 0px transparent;
 	animation: sound8-1 .3s 2 ease-in-out, sound8-2 .6s ease-in-out, sound8mask 46s, distort .5s 1s 85, mask-gradient 46s ease;
 }
@@ -423,7 +503,6 @@ svg {
 	box-shadow: 0px solid transparent;
 	z-index: -10;
 	border-radius: 0;
-	/* box-shadow: 0px 0px 35px 20px var(--gray); */
 	animation: sound8-3 56s 1s ease-out forwards, sound8-3 .5s 46s reverse forwards;
 }
 
@@ -446,34 +525,11 @@ svg {
 	to {
 		height: 55%;
 	}
-}
+} */
 
 
+/* --- NEXT SCENE --- */
 
-/* **********************************************
-Basic layout.
-	Place the video in the center of the page.
-*********************************************  */
-
-body {
-	display: grid;
-	height: 100vh;
-	margin: 0;
-	justify-content: center;
-}
-#video-container {
-	margin: auto;
-}
-#video-mask {
-	aspect-ratio: 240.5/100;
-	display: grid;
-	overflow: hidden;
-	align-content: center;
-	transition: 1s;
-}
-
-iframe {
-	width: 80vw;
-	height: 53.33333333vw;
-	margin-top: -0.35vw;
+.sound10 {
+	background-color: var(--greyish);
 }
